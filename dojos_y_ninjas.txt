@@ -1,0 +1,53 @@
+SELECT * FROM esquema_dojos_y_ninjas.dojos AS dojos;
+
+INSERT INTO esquema_dojos_y_ninjas.dojos (nombre) VALUES ('Javascript');
+INSERT INTO esquema_dojos_y_ninjas.dojos (nombre) VALUES ('Python');
+INSERT INTO esquema_dojos_y_ninjas.dojos (nombre) VALUES ('Data science');
+
+DELETE FROM esquema_dojos_y_ninjas.dojos WHERE id = 1 OR id = 2 OR id = 3;
+
+INSERT INTO esquema_dojos_y_ninjas.dojos (nombre,created_at,updated_at) VALUES ('Rust',NOW(),NOW());
+INSERT INTO esquema_dojos_y_ninjas.dojos (nombre,created_at,updated_at) VALUES ('Go',NOW(),NOW());
+INSERT INTO esquema_dojos_y_ninjas.dojos (nombre,created_at,updated_at) VALUES ('Solidity',NOW(),NOW());
+
+
+SELECT * FROM esquema_dojos_y_ninjas.ninjas;
+
+-- Primer Dojo
+INSERT INTO `esquema_dojos_y_ninjas`.`ninjas`(`first_name`,`last_name`,`age`,`created_at`,`updated_at`,`dojo_id`)
+VALUES('Juan','Perez',20,NOW(),NOW(),4);
+INSERT INTO `esquema_dojos_y_ninjas`.`ninjas`(`first_name`,`last_name`,`age`,`created_at`,`updated_at`,`dojo_id`)
+VALUES('Richard','Torres',26,NOW(),NOW(),4);
+INSERT INTO `esquema_dojos_y_ninjas`.`ninjas`(`first_name`,`last_name`,`age`,`created_at`,`updated_at`,`dojo_id`)
+VALUES('Pedro','Salvatore',22,NOW(),NOW(),4);
+
+-- Segundo Dojo
+INSERT INTO `esquema_dojos_y_ninjas`.`ninjas`(`first_name`,`last_name`,`age`,`created_at`,`updated_at`,`dojo_id`)
+VALUES('Alberto','Fernandez',30,NOW(),NOW(),5);
+INSERT INTO `esquema_dojos_y_ninjas`.`ninjas`(`first_name`,`last_name`,`age`,`created_at`,`updated_at`,`dojo_id`)
+VALUES('Jail','Bolsonaro',40,NOW(),NOW(),5);
+INSERT INTO `esquema_dojos_y_ninjas`.`ninjas`(`first_name`,`last_name`,`age`,`created_at`,`updated_at`,`dojo_id`)
+VALUES('Nayib','Bukele',50,NOW(),NOW(),5);
+
+-- Tercer Dojo
+INSERT INTO `esquema_dojos_y_ninjas`.`ninjas`(`first_name`,`last_name`,`age`,`created_at`,`updated_at`,`dojo_id`)
+VALUES('Jon','Doerr',30,NOW(),NOW(),6);
+INSERT INTO `esquema_dojos_y_ninjas`.`ninjas`(`first_name`,`last_name`,`age`,`created_at`,`updated_at`,`dojo_id`)
+VALUES('Steve','Jobs',40,NOW(),NOW(),6);
+INSERT INTO `esquema_dojos_y_ninjas`.`ninjas`(`first_name`,`last_name`,`age`,`created_at`,`updated_at`,`dojo_id`)
+VALUES('Elon','Musk',50,NOW(),NOW(),6);
+
+-- Recuperar los ninjas del primer dojo
+SELECT * FROM esquema_dojos_y_ninjas.ninjas
+WHERE dojo_id = 4;
+
+-- Recuperar los ninjas del primer dojo
+SELECT * FROM esquema_dojos_y_ninjas.ninjas
+WHERE dojo_id = 6;
+
+-- Recupera el dojo del ultimo ninja
+SELECT nombre,first_name FROM esquema_dojos_y_ninjas.dojos
+JOIN esquema_dojos_y_ninjas.ninjas ON esquema_dojos_y_ninjas.ninjas.dojo_id = esquema_dojos_y_ninjas.dojos.id
+WHERE esquema_dojos_y_ninjas.ninjas.id = 9;
+
+

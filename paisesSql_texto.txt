@@ -1,0 +1,44 @@
+SELECT * FROM world.cities;
+
+-- 1.
+SELECT name, population,language FROM world.countries
+JOIN world.languages ON languages.country_id = countries.id
+WHERE language = 'Slovene'
+ORDER BY population DESC;
+
+-- 2. POR RESOLVER
+SELECT countries.name, COUNT(*) FROM world.countries
+JOIN world.cities ON countries.id = cities.country_id 
+GROUP BY countries.name
+ORDER BY COUNT(*) DESC;
+
+-- 3. 
+SELECT cities.name AS ciudades,cities.population, cities.country_id  FROM world.cities
+JOIN world.countries ON countries.id = cities.country_id
+WHERE countries.name = 'Mexico' AND cities.population > 500000
+ORDER BY cities.population DESC;
+
+-- 4. 
+SELECT countries.name, language, percentage FROM world.countries
+JOIN world.cities ON countries.id = cities.country_id 
+JOIN world.languages ON countries.id = languages.country_id
+WHERE percentage > 89
+ORDER BY percentage DESC; 
+ 
+ -- 5.
+ SELECT name, surface_area, population FROM world.countries
+ WHERE surface_area < 501 AND population > 100000;
+ 
+ -- 6. 
+ SELECT name, government_form, capital, life_expectancy FROM world.countries
+ WHERE government_form = 'Constitutional Monarchy' AND capital > 200 AND life_expectancy > 75;
+ 
+ -- 7.
+ SELECT countries.name, cities.name, cities.district,countries.population FROM world.countries
+ JOIN world.cities ON countries.id = cities.country_id 
+ WHERE countries.name = 'Argentina' AND cities.district = 'Buenos Aires' AND countries.population > 500000;
+ 
+-- 8.
+SELECT countries.region, COUNT(*) FROM world.countries
+GROUP BY countries.region
+ORDER BY COUNT(*) DESC;
